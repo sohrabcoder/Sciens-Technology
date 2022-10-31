@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Validation</h2>
+
+<p>Please input a number between 1 and 10:</p>
+
+<input id="numb">
+
+<button type="button" onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("numb").value;
+  // If x is Not a Number or less than one or greater than 10
+  let text;
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html> 
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p id="demo"></p>
+ 
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const x = xmlDoc.getElementsByTagName("ARTIST");
+  let txt = "";
+  for (let i = 0; i < x.length; i++) {
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p id="demo"></p>
+ 
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const x = xmlDoc.getElementsByTagName("ARTIST");
+  let txt = "";
+  for (let i = 0; i < x.length; i++) {
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html>
+ -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<p>Click on a CD to display album information.</p>
+<p id='showCD'></p>
+<table id="demo"></table>
+
+<script>
+const xhttp = new XMLHttpRequest();
+let cd;
+xhttp.onload = function() {
+ const xmlDoc = xhttp.responseXML; 
+ cd = xmlDoc.getElementsByTagName("CD");
+ loadCD();
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+
+function loadCD() {
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i < cd.length; i++) { 
+    table += "<tr onclick='displayCD(" + i + ")'><td>";
+    table += cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+    table += "</td><td>";
+    table += cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+    table += "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+
+function displayCD(i) {
+  document.getElementById("showCD").innerHTML =
+  "Artist: " +
+  cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+  "<br>Title: " +
+  cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+  "<br>Year: " + 
+  cd[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+}
+</script>
+
+</body>
+</html> -->
+
+<!-- <table id="demo"></table>
+
+<script>
+function loadXMLDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const xmlDoc = xhttp.responseXML;
+    const cd = xmlDoc.getElementsByTagName("CD");
+    myFunction(cd);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+
+function myFunction(cd) {
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i < cd.length; i++) {
+    table += "<tr><td>" +
+    cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+<script>
+function goBack() {
+  window.history.back()
+         }
+</script>
+</head>
+<body>
+
+<input type="button" value="Back" onclick="goBack()">
+
+</body>
+</html> -->
+
+
+
+<!-- <html>
+<head>
+<script>
+function goForward() {
+  window.history.forward()
+}
+</script>
+</head>
+<body>
+
+<input type="button" value="Forward" onclick="goForward()">
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Prompt</h2>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  let text;
+  let person = prompt("Please enter your name:", "Harry Potter");
+  if (person == null || person == "") {
+    text = "User cancelled the prompt.";
+  } else {
+    text = "Hello " + person + "! How are you today?";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
+ -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<script>
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let user = getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+</script>
+</head>
+
+<body onload="checkCookie()"></body>
+
+</html> -->
